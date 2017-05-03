@@ -10,6 +10,7 @@
 
 using System.Xml.Serialization;
 using System;
+using System.CodeDom;
 using FortnoxAPILibrary.Connectors;
 using System.ComponentModel;
 
@@ -97,7 +98,10 @@ namespace FortnoxAPILibrary
 
 	    private string salesPriceField;
 
-	    /// <remarks/>
+		/// <remarks/>
+		public string Active { get; set; }
+
+		/// <remarks/>
 		public string ArticleNumber
 		{
 			get
