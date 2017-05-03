@@ -27,6 +27,7 @@ namespace FortnoxAPILibrary
 			set => _accessToken = value;
 		}
 
+	    /// <remarks/>
         public FortnoxError.ErrorInformation Error { get; set; }
 
         /// <summary>
@@ -101,11 +102,13 @@ namespace FortnoxAPILibrary
         internal HttpWebRequest SetupRequest(string requestUriString, string method)
         {
             Error = null;
+            if (string.IsNullOrEmpty(AccessToken) || string.IsNullOrEmpty(ConnectionCredentials.ClientSecret))
             {
                 throw new Exception("Access-Token and Client-Secret must be set");
             }
 
             HttpWebRequest wr = (HttpWebRequest)HttpWebRequest.Create(requestUriString);
+            wr.Headers.Add("access-token", AccessToken);
             wr.Headers.Add("client-secret", ConnectionCredentials.ClientSecret);
             wr.ContentType = "application/xml";
             wr.Accept = "application/xml";
