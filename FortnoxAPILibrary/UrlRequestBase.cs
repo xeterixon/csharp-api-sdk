@@ -23,8 +23,8 @@ namespace FortnoxAPILibrary
 		/// </summary>
 		public string AccessToken
 	    {
-		    get => string.IsNullOrEmpty(_accessToken) ? ConnectionCredentials.AccessToken : _accessToken;
-			set => _accessToken = value;
+            get { return string.IsNullOrEmpty(_accessToken) ? ConnectionCredentials.AccessToken : _accessToken; }
+			set { _accessToken = value; }
 		}
 
 	    /// <remarks/>
